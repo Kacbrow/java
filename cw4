@@ -1,0 +1,148 @@
+public class Singleton {
+    private static Singleton s = new Singleton();
+    public int test = 0;
+    public static Singleton getInstance(){
+        return s;
+    }
+
+    private Singleton() {
+        test++;
+    }
+}
+
+public class Kalkulator {
+    public static double sum(double a, double b){
+        return a+b;
+    }
+
+    public static double mul(double a, double b){
+        return a*b;
+    }
+
+    public static double sub(double a, double b){
+        return a-b;
+    }
+
+    public static double div(double a, double b){
+        return a/b;
+    }
+}
+
+
+public class Ksiazka {
+    public String autor;
+    public String tytul;
+    public int rokWydania;
+
+    public Ksiazka(String autor, String tytul, int rokWydania) {
+        this.autor = autor;
+        this.tytul = tytul;
+        this.rokWydania = rokWydania;
+    }
+
+    public Ksiazka() {
+        this.autor = "default";
+        this.tytul = "default";
+        this.rokWydania = 1888;
+    }
+}
+
+
+public class Kwadrat {
+    public int bok;
+
+    public Kwadrat() {
+        this(1);
+    }
+
+    public Kwadrat(int bok) {
+        this.bok = bok;
+    }
+}
+
+
+public class Matematyka {
+    public static final double PI = Math.atan(1) * 4;
+}
+
+
+public class Osoba {
+    public String imie;
+    public String nazwisko;
+    public int wiek;
+    public static int licznik;
+
+    public Osoba(){
+        this("default","default");
+    }
+
+    public Osoba(String imie, String naziwsko, int wiek) {
+        this.imie = imie;
+        this.nazwisko = naziwsko;
+        this.wiek = wiek;
+        licznik++;
+    }
+
+    public Osoba(String imie, String nazwisko) {
+        this(imie,nazwisko,0);
+    }
+}
+
+
+public class Produkt {
+    public static int liczbaProduktow;
+    public static final int MAX_PRODUKTOW = 10;
+
+}
+
+public class Samochod {
+    public String marka;
+    public String model;
+    public int rokProdukcji;
+
+    public Samochod(){
+
+    }
+
+    public Samochod(String marka, String model) {
+        this.marka = marka;
+        this.model = model;
+    }
+
+    public Samochod(String marka, String model, int rokProdukcji) {
+        this.marka = marka;
+        this.model = model;
+        this.rokProdukcji = rokProdukcji;
+    }
+}
+
+
+public class Student {
+    public String imie;
+    public String nazwisko;
+    public String kierunekStudiow;
+
+    public Student(String imie, String nazwisko) {
+        this(imie,nazwisko,"nieznany");
+    }
+
+    public Student(String imie, String nazwisko, String kierunekStudiow) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.kierunekStudiow = kierunekStudiow;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Singleton s1 = Singleton.getInstance();
+        System.out.println(s1.test);
+
+        Singleton s2 = Singleton.getInstance();
+        System.out.println(s2.test);
+
+        System.out.println(s1 == s2);
+    }
+}
+
