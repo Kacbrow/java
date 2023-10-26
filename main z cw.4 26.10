@@ -43,6 +43,11 @@ public class Main {
        // System.out.println(r1.Max_Produktow);
 
         //Singleton nie będzie na kolokwium!!!!!
+        Singleton s1=Singleton.getInstance();
+        System.out.println(s1.test);
+        Singleton s2=Singleton.getInstance();
+        System.out.println(s2.test);
+        System.out.println(s1==s2);
 
 
     }
