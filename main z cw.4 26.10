@@ -1,0 +1,49 @@
+public class Main {
+    public static void main(String[] args) {
+
+
+        Ksiazka k1=new Ksiazka();
+        System.out.println(k1.autor);
+        Ksiazka k2=new Ksiazka("Ostatnie życzenie",
+                "Andrzej Sapkowski",1993);
+        System.out.println(k2.autor);
+
+        Samochod s1=new Samochod();
+        System.out.println(s1.marka);
+
+        Samochod s2=new Samochod("Hundai","X");
+        System.out.println(s2.marka);
+
+        Samochod s3=new Samochod("BMW","M5",2004);
+        System.out.println(s3.model);
+
+        //Osoba o1=new Osoba();
+        //System.out.println(o1.imie);
+        Osoba o2=new Osoba("Michal","Rak");
+        System.out.println(o2.imie);
+
+        Osoba1 p1=new Osoba1();
+        //System.out.println(p1.licznik);
+        //Osoba1 p2=new Osoba1();
+        //System.out.println(p2.licznik);
+        //System.out.println(Osoba1.licznik);
+        System.out.println(p1.getLicznik());
+
+        Matematyka m1=new Matematyka();
+        System.out.println(m1.PI);
+
+
+        System.out.println(Kakulator.suma(1,3));
+        System.out.println(Kakulator.mnozenie(4,3));
+        System.out.println(Kakulator.dzielenie(4,5));
+
+        Produkt r1=new Produkt();
+       // r1.liczbaProduktow=7;
+       // System.out.println(r1.liczbaProduktow);
+       // System.out.println(r1.Max_Produktow);
+
+        //Singleton nie będzie na kolokwium!!!!!
+
+
+    }
+}
