@@ -1,0 +1,94 @@
+public class Animal {
+    public String name;
+    public  Animal(){
+        name = "default";
+    }
+    public Animal(String name){
+        this.name=name;
+    }
+    @Override
+    public String toString(){
+        return this.name;
+    }
+    @Override
+    public boolean equals(Object other) //Metoda
+    {
+        if (other instanceof Animal temp) {
+
+            return this.name.equals(temp.name);
+        }
+        else{
+            return false;
+        }
+    }
+    public void makeNoise()
+    {
+        System.out.println("Odgłosy zwierzęcia");
+    }
+}
+class Cat extends Animal{
+    public Cat(){
+
+    }
+
+    public Cat(String name)// Konstruktor
+    {
+        super(name);
+    }
+    @Override // nadrzednosc
+    public void makeNoise(){ // metoda
+        System.out.println("Miau Miau");
+    }
+}
+
+public class Person {
+    private String firstName;
+    protected String lastName;
+    public Person(){
+        this.firstName = "Default";
+        this.lastName = "Default";
+    }
+    public String getFirstName(){
+        return firstName;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+}
+class Employee extends Person {
+    public String displayData(){
+        return getFirstName()+ " " + getLastName();
+    }
+}
+
+
+public class Book {
+    public String title;
+    public String author;
+
+    public int numberOfPages;
+
+    public Book(String title, String author, int numberOfPages){
+            this.numberOfPages = (numberOfPages > 0) ? numberOfPages : 1;
+            this.title = (title == null || title.isEmpty()) ? "" : title;
+            this.author = (author == null || author.isEmpty()) ? "" : author;
+        }
+        @Override
+        public String toString () {
+            return "Book: " + this.title +
+                    "\nby " + this.author +
+                    ",\nPages:\n" +
+                    this.numberOfPages +
+                    "\n.";
+        }
+        @Override
+        public boolean equals (Object obj){
+            if (obj instanceof Book o) {
+                boolean pages = this.numberOfPages == o.numberOfPages;
+                boolean author = this.author.equals(o.author);
+                boolean title = this.title.equals(o.title);
+                return pages && author && title;
+            }
+            return false;
+        }
+    }
