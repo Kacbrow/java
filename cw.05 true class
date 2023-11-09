@@ -71,7 +71,7 @@ public class Book {
     public int numberOfPages;
 
     public Book(String title, String author, int numberOfPages){
-            this.numberOfPages = (numberOfPages > 0) ? numberOfPages : 1;
+            this.numberOfPages = (numberOfPages >= 0) ? numberOfPages : 1;
             this.title = (title == null || title.isEmpty()) ? "" : title;
             this.author = (author == null || author.isEmpty()) ? "" : author;
         }
@@ -84,7 +84,7 @@ public class Book {
                     "\n.";
         }
         @Override
-        public boolean equals (Object obj){
+        public boolean equals (Object obj){ //objekt
             if (obj instanceof Book o) {
                 boolean pages = this.numberOfPages == o.numberOfPages;
                 boolean author = this.author.equals(o.author);
@@ -92,8 +92,13 @@ public class Book {
                 return pages && author && title;
             }
             return false;
+            /* else { lub tak możemy dodać do czytelności
+                return false;
+            }*/
+
         }
     }
+
 
 //zad.3
 public class Tool {
