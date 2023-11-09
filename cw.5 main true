@@ -11,17 +11,22 @@ public class Main {
         kot.makeNoise();
         Animal animal3 = new Cat("bonifacy");
         animal3.makeNoise();
+        // zad,1
         Employee pracownik = new Employee();
         System.out.println(pracownik.displayData());
+        //zad.2
         Book b = new Book("1","1",1);
         Book b2 = new Book("1","1",1);
         System.out.println(b);
         System.out.println(b.equals(b2));
         b2.numberOfPages = 3;
         System.out.println(b.equals(b2));
+        //zad.4 nazwy specyficzne to pola
+        Samochod s = new Samochod("Opel");
+        s.jedz();
+        //zad.5
 
-
-
+        
     }
 
 }
