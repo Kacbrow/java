@@ -25,7 +25,9 @@ public class Main {
         Samochod s = new Samochod("Opel");
         s.jedz();
         //zad.5
-
+        KalkulatorRozszerzony k = new KalkulatorRozszerzony();
+        System.out.println(k.dodaj(1,2,3));
+        k.test();
         
     }
 
