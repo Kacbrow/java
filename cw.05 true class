@@ -1,3 +1,4 @@
+// przykład
 public class Animal {
     public String name;
     public  Animal(){
@@ -41,6 +42,7 @@ class Cat extends Animal{
     }
 }
 
+//zad.1
 public class Person {
     private String firstName;
     protected String lastName;
@@ -61,7 +63,7 @@ class Employee extends Person {
     }
 }
 
-
+//zad.2
 public class Book {
     public String title;
     public String author;
@@ -92,3 +94,41 @@ public class Book {
             return false;
         }
     }
+
+//zad.3
+public class Tool {
+    public String nameOfTool;
+    protected Tool(String nameOfTool){
+        this.nameOfTool = nameOfTool;
+    }
+}
+class Hammer extends Tool{
+
+    protected Hammer(String nameOfTool) {
+        super(nameOfTool);
+    }
+}
+
+//zad.4
+public class Pojazd {
+    public void jedz(){
+        System.out.println("Pojazd jedzie");
+    }
+}
+
+class Samochod extends Pojazd{
+    public String marka;
+
+    public Samochod(String marka) {
+        this.marka = marka;
+    }
+
+    @Override
+    public void jedz() {
+        super.jedz();
+        System.out.println("Marka: " + this.marka);
+    }
+}
+
+
+//zad.5
