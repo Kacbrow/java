@@ -1,0 +1,44 @@
+public class Main {
+    public static void main(String[] args) {
+        zad7();
+    }
+
+    public static void zad7(){
+        new Programista();
+    }
+
+    public static void zad6(){
+        KalkulatorRozszerzony k = new KalkulatorRozszerzony();
+        System.out.println(k.dodaj(1,2,3));
+        k.test();
+    }
+    public static void zad5(){
+        Samochod s = new Samochod("Opel");
+        s.jedz();
+    }
+
+    public static void zad4(){
+//tool i hammer
+    }
+
+    public static void zad3(){
+        Book b = new Book("1","1",1);
+        Book b2 = new Book("1","1",1);
+        System.out.println(b);
+        System.out.println(b.equals(b2));
+        b2.numberOfPages = 3;
+        System.out.println(b.equals(b2));
+    }
+
+    public static void zad2(){
+        Employee e = new Employee("Adam","Mada");
+        e.displayData();
+    }
+
+    public static void zad1(){
+        Person p = new Person("fp","lp");
+        Employee e = new Employee("f","l");
+        System.out.println(p.lastName);
+        System.out.println(e.lastName);
+    }
+}
