@@ -1,0 +1,27 @@
+public class Main {
+    public static void main(String[] args) {
+
+        Animal animal = new Animal("Zebra");
+        Animal animal2 = new Animal("zebra");
+        System.out.println(animal == animal2);
+        System.out.println(animal.equals(animal2));
+        animal.makeNoise();
+        Cat kot = new Cat("Filemon");
+        System.out.println(kot.name);
+        kot.makeNoise();
+        Animal animal3 = new Cat("bonifacy");
+        animal3.makeNoise();
+        Employee pracownik = new Employee();
+        System.out.println(pracownik.displayData());
+        Book b = new Book("1","1",1);
+        Book b2 = new Book("1","1",1);
+        System.out.println(b);
+        System.out.println(b.equals(b2));
+        b2.numberOfPages = 3;
+        System.out.println(b.equals(b2));
+
+
+
+    }
+
+}
