@@ -1,0 +1,32 @@
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Adam",15);
+        Person p2 =new Person("Adam",-15);
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p1.equals(p2));
+        System.out.println(p2.age());
+        Person.greet();
+    }
+}
+
+// classy nie maja nawiasy taka jest roznica
+//w nawiase zdefiniować classe
+// w main wywołujemy tylko np: sout(p1)
+public record Person(String name,int age) {
+
+    //konstruktor  tak tworzymy bez nawiasow
+    public  Person{
+        if(age<0)
+            age=0;
+    }
+    public Person(String name){
+        this(name,0);
+    }
+    public static void greet(){
+        System.out.println("czesc");
+    }
+
+
+
+}
