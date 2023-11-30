@@ -1,0 +1,52 @@
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Animal("zebra", 1, 13.);
+        Animal a2 = new Animal("zebra", 2, 13.);
+        System.out.println(Integer.toHexString(a2.hashCode()) + "\n" + Integer.toHexString(a1.hashCode()));
+
+        Person p1 = new Person("Adam",15);
+        Person p2 =new Person("Adam",-15);
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p1.equals(p2));
+        System.out.println(p2.age());
+        Person.greet();
+
+        // zad.1 bookDTO
+        BookDTO b1=new BookDTO("Igrzyska smierci","Suzanne Collins",50,2018);
+        BookDTO b2=new BookDTO(
+                "Harry Potter i Kamień Filozoficzny",
+                "J.K. Rowling",60,1997);
+        BookDTO b3=new BookDTO("Harry Potter and the Chamber of Secrets",
+                "J.K. Rowling",60,1998);
+        System.out.println(b1);
+        System.out.println(b2);
+        System.out.println(b3);
+
+        // zad.2
+        Adress d1=new Adress("Niepodleglosci",73,10-234,"Olsztyn");
+        Person1 r1=new Person1("Kacper","Kowalski",d1);
+        System.out.println(r1);
+
+        // zad.3
+
+        // zad.4
+        MusicTrack m1=new MusicTrack("Cos","ktos");
+        System.out.println(m1);
+
+        //zad.5 dokladnie sprawdz jak przelicz sie co kazdy kilometr
+        Car c1=new Car("bmw","m5",32);
+        System.out.println(c1.fuelCost(10.99,1000));
+
+
+    }
+}
+//1. Stwórz rekord BookDTO, który reprezentuje książkę w sklepie internetowym. Powinien zawierać takie informacje jak title, author, price i yearOfPublication. Następnie stwórz kilka instancji tego rekordu, reprezentujących różne książki.
+
+//2. Utwórz rekord Address, który zawiera street, houseNumber, postalCode i city. Następnie, stwórz rekord Person, który oprócz podstawowych informacji o osobie (np. firstName, lastName) zawiera również pole typu Address. Stwórz przypadek testowy.
+
+//3. Stwórz rekord BankAccount, który zawiera numer konta oraz saldo. Dodaj konstruktor, który pozwala na tworzenie konta tylko z numerem, przy czym domyślne saldo wynosi 0. Stwórz przypadek testowy
+
+//4. Stwórz rekord MusicTrack, który opisuje tytuł, artystę i czas trwania utworu w sekundach. Dodaj konstruktor, który przyjmuje tylko tytuł i artystę, przyjmując domyślną długość utworu jako 180 sekund. Stwórz przypadek testowy.
+
+//5. Stwórz rekord Car, który zawiera brand, model i fuelConsumptionPer100km. Dodaj metodę fuelCost(double fuelPrice, double distance), która oblicza i zwraca koszt podróży na podstawie podanej ceny paliwa oraz dystansu. Stwórz przypadek testowy.
