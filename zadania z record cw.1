@@ -1,0 +1,37 @@
+public record Car(String brand,String model,int fuelConsumptionPer100km) {
+
+    public double fuelCost(double fuelCost,double distance){
+         return fuelCost*(distance/100);
+
+    }
+}
+
+
+public record MusicTrack(String tittle,String artist,int times) {
+    public MusicTrack(String tittle,String artist){
+        this(tittle,artist,180);
+    }
+}
+
+
+public record BankAccount(long numberAccount,int balance) {
+
+    public  BankAccount(long  numberOfBankAccount){
+        this(numberOfBankAccount,0);
+    }
+}
+
+
+public record Adress(String street,int hauseNumber,int postalCode, String city) {
+
+
+}
+
+public record Person1(String firstName,String lastName,Adress adress) {
+
+
+}
+
+public record BookDTO(String title,String author,double price,int yearOfPublication) {
+
+}
