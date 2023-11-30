@@ -1,0 +1,127 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public record Order(
+        List<Product> productList
+) {
+    public double totalValue(){
+        double sum = 0;
+        for(var x : productList){
+            sum += x.price();
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Product p1 = new Product("Jaja",8);
+        Product p2 = new Product("Parówka",7.5);
+        List<Product> productList = new ArrayList<>();
+        productList.add(p1);
+        productList.add(p2);
+
+        Order o1 = new Order(productList);
+
+        System.out.println(o1.totalValue());
+    }
+}
+
+
+public record Address(
+        String street,
+        int houseNumber,
+        int postalCode,
+        String city
+) {
+}
+
+
+import java.util.Objects;
+
+public class Animal {
+    public int age;
+    public double weight;
+    public String name;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && Double.compare(weight, animal.weight) == 0 && Objects.equals(name, animal.name);
+    }
+
+    @Override
+    public int hashCode() {
+        //return Objects.hash(age, weight, name);
+        int result = 17;
+        result = 31 * result + age;
+        result = 31 * result + (int) (Double.doubleToLongBits(weight) ^ (Double.doubleToLongBits(weight) >>> 32 ));
+        result = 31 * result + name.hashCode();
+
+        return result;
+    }
+}
+
+
+public record BookDTO(String title,
+                      String author,
+                      int price,
+                      int yearOfPublication
+) {
+
+
+
+
+    public static void main(String[] args) {
+        BookDTO b1 = new BookDTO("tytul1","autor1",2,2004);
+        BookDTO b2 = new BookDTO("tytul2","autor2",3,200004);
+        BookDTO b3 = new BookDTO("b","a",2004,2);
+    }
+}
+
+public record Person(String firstName,
+                     String lastName,
+                     Address address
+) {
+}
+
+
+public record Product(
+        String name,
+        double price
+) {
+}
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public record Student(
+        String firstName,
+        String lastname,
+        List<Integer> listaOcen
+) {
+    public double averageGrades(){
+        double sum = 0;
+        for(var x : listaOcen){
+            sum += x;
+        }
+        return sum / listaOcen.size();
+    }
+
+    public static void main(String[] args) {
+        List<Integer> oceny = new ArrayList<>();
+        oceny.add(2);
+        oceny.add(2);
+        oceny.add(2);
+        oceny.add(3);
+        Student student = new Student("fn","ln",oceny);
+        System.out.println(student.averageGrades());
+    }
+}
+
+
+
+
+
