@@ -1,7 +1,7 @@
 public record Car(String brand,String model,int fuelConsumptionPer100km) {
 
     public double fuelCost(double fuelCost,double distance){
-         return fuelCost*(distance/100);
+         return fuelCost*(fuelConsumptionPer100km*distance/100);
 
     }
 }
