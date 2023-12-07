@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Student implements Comparable<Student> {
+    String name;
+    double averageGrade;
+    int id;
+
+    public Student(String name, double averageGrade, int id) {
+        this.name = name;
+        this.averageGrade = averageGrade;
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Student2{" +
+                "name='" + name + '\'' +
+                ", averageGrade=" + averageGrade +
+                ", id=" + id +
+                '}' + '\n';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        if (Double.compare(this.averageGrade, o.averageGrade) == 0) {
+            //return this.id - o.id;
+            return Integer.compare(o.id,this.id);
+        }
+        return Double.compare(o.averageGrade, this.averageGrade);
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Student> student1 = new ArrayList<>();
+        student1.add(new Student("adas", 2.3, 1));
+        student1.add(new Student("marcel", 2.3, 2));
+        student1.add(new Student("piotrek", 3.3, 5));
+        student1.add(new Student("igor", 3, 3));
+        System.out.println(student1);
+        Collections.sort(student1);
+        System.out.println(student1);
+    }
+}
+class  AverageGradeComparator implements Comparator<Student> {
+
+    @Override
+    public int compare(Student o1, Student o2) {
+        return Double.compare(o2.averageGrade,o1.averageGrade);
+    }
+}
