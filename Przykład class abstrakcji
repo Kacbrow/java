@@ -1,0 +1,109 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Osoba implements Comparable<Osoba>,Cloneable{
+    String name;
+    double height;
+    int age;
+
+
+    public Osoba(String name, double height, int age) {
+        this.name = name;
+        this.height = height;
+        this.age = age;
+    }
+
+    public Osoba(double height) {
+        this.height = height;
+    }
+
+    public Osoba(int age) {
+        this.age = age;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "["+ height+" "+age+"]";
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Osoba> osobaList = new ArrayList<>();
+        osobaList.add(new Osoba("", 156.00, 15));
+        osobaList.add(new Osoba("", 158.00, 18));
+        osobaList.add(new Osoba("", 156.00, 24));
+        osobaList.add(new Osoba("", 176.00, 18));
+        System.out.println(osobaList);
+        //Collections.sort(osobaList,new OsobaHeightComparator());
+        osobaList.sort(new OsobaHeightComparator());
+        System.out.println(osobaList);
+        ArrayList<Osoba> osobaList2 = new ArrayList<>();
+        osobaList2.add(new Osoba("", 156.00, 15));
+        osobaList2.add(new Osoba("", 158.00, 18));
+        osobaList2.add(new Osoba("", 156.00, 24));
+        osobaList2.add(new Osoba("", 176.00, 18));
+        //Collections.sort(osobaList2,new OsobaAgeComparator().reversed());//sortowanie zostało odwrocone
+        osobaList2.sort(new OsobaAgeComparator()); // uzyjemy jesli chcemy miec niezalezne kilka innym slowum porownuje kilka
+        System.out.println(osobaList2);
+        //Osoba o1=new Osoba("Stefan",182,21);
+        //Osoba o2=o1; //ta sama zmienna ktora ma ten sam obiekt
+        //Osoba o2=o1.clone();
+
+    }
+
+    @Override
+    public int compareTo(Osoba o) {
+        /*if(this.height>o.height) //malejaco sortowanie
+            return -1;
+        if (o.height==this.height)
+            return 0;
+        return 1;*/
+       // return Double.compare(o.height,this.height // krotszy sposob
+        if(Double.compare(o.height,this.height)==0){
+            return Integer.compare(o.age,this.age);
+        }
+        return  Double.compare(o.height,this.height); //
+        // return (int) Math.signum(o.height-this.height); // trzeci sposob
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
+}
+class  OsobaHeightComparator implements Comparator<Osoba>{
+
+    @Override
+    public int compare(Osoba o1, Osoba o2) {
+        return Double.compare(o2.height,o1.height);
+    }
+}
+class OsobaAgeComparator implements Comparator<Osoba>{
+
+    @Override
+    public int compare(Osoba o1, Osoba o2) {
+        return Integer.compare(o2.age,o1.age);
+    }
+}
+
+
+a to w main jako!
+public class Main {
+    public static void main(String[] args) throws CloneNotSupportedException{
+        Osoba o1=new Osoba("Stefan",182,21);
+        //Osoba o2=o1; //ta sama zmienna ktora ma ten sam obiekt
+        Osoba o2=(Osoba) o1.clone();
+        System.out.println(o1+" "+o2);
+        o2.age=95;
+        System.out.println(o1+" "+o2);
+
+    }
+}
+// jak czasem cos nie tak to wez nacisnij w plik CurrentFile
+
+
+
+
+
