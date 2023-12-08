@@ -1,20 +1,31 @@
-[15:10] Marcin Młyński
-Napisz klasę Ksiazka, która zawiera pola: tytul (typu String), liczbaStron (typu int) i dataWydania (typu LocalDate). Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Ksiazka były sortowane malejąco według liczby stron. Stwórz tablicę 4 obiektów klasy Ksiazka i posortuj ją według sprecyzowanego kryterium.
- like 13 2714_heavycheckmark 1
-[15:10] Marcin Młyński
-Napisz klasę Samochod, która zawiera pola: marka (typu String), przebieg (typu int) i rokProdukcji (typu int). Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Samochod były sortowane rosnąco według przebiegu. Stwórz tablicę 4 obiektów klasy Samochod i posortuj ją według sprecyzowanego kryterium.
- like 14 2714_heavycheckmark 1
-[15:11] Marcin Młyński
-Napisz klasę Zamowienie, która zawiera pola: nazwaProduktu (typu String), ilosc (typu int) i cenaJednostkowa (typu double). Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Zamowienie były sortowane według jednego kryterium: malejąco według ceny jednostkowej, a przy równości sortowane były rosnąco według ilości. Stwórz listę tablicową 4 obiektów klasy Zamowienie i posortuj ją według sprecyzowanego kryterium.
- like 12 2714_heavycheckmark 1
-[15:14] Marcin Młyński
-Napisz klasę Order z polami id (typu int), customerName (typu String) oraz orderDate (typu LocalDate). Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu orderDate (od najwcześniejszej do najpóźniejszej daty), a w przypadku równości po polu id. Stwórz listę 5 obiektów klasy Order i posortuj ją zgodnie z opisanym kryterium.
- like 7 2714_heavycheckmark 1
-[15:15] Marcin Młyński
-Napisz klasę Song z polami title (typu String), artist (typu String) oraz duration (typu int). Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu duration (od najkrótszej do najdłuższej piosenki), a w przypadku równości po polu title. Stwórz tablicę 5 obiektów klasy Song i posortuj ją zgodnie z opisanym kryterium.
- like 1
-[15:21] Marcin Młyński
-Napisz klasę Student z polami id (typu int), name (typu String) oraz averageGrade (typu double). Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: AverageGradeComparator do porównywania obiektów po polu averageGrade (od najwyższej do najniższej średniej ocen) oraz IdComparator do porównywania obiektów po polu id (od najniższego do najwyższego identyfikatora). Stwórz listę 5 obiektów klasy Student i posortuj ją zgodnie z oboma kryteriami (najpierw po średniej ocen, a następnie po identyfikatorze).
-[15:22] Marcin Młyński
-Napisz klasę Athlete z dwoma polami: name (String) i lapTimes (lista tablicowa zmiennych typu Integer, reprezentująca czas w sekundach potrzebny na przebiegnięcie okrążenia podczas różnych prób). Zaimplementuj interfejs Cloneable i nadpisz metodę clone(), aby móc klonować obiekty tej klasy. W metodzie main() utwórz obiekt Athlete, sklonuj go, a następnie zmień czas na pozycji 3 oryginalnego sportowca. Wyświetl czasy obu sportowców, aby zobaczyć, czy są niezależne.
- like 1
+
+1. Napisz klasę Ksiazka, która zawiera pola: tytul (typu String), liczbaStron (typu int) i dataWydania (typu LocalDate). 
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Ksiazka były sortowane malejąco według liczby stron. 
+Stwórz tablicę 4 obiektów klasy Ksiazka i posortuj ją według sprecyzowanego kryterium.
+
+2. Napisz klasę Samochod, która zawiera pola: marka (typu String), przebieg (typu int) i rokProdukcji (typu int). 
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Samochod były sortowane rosnąco według przebiegu. 
+Stwórz tablicę 4 obiektów klasy Samochod i posortuj ją według sprecyzowanego kryterium.
+
+3. Napisz klasę Zamowienie, która zawiera pola: nazwaProduktu (typu String), ilosc (typu int) i cenaJednostkowa (typu double). 
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Zamowienie były sortowane według jednego kryterium: malejąco według ceny jednostkowej, 
+a przy równości sortowane były rosnąco według ilości. Stwórz listę tablicową 4 obiektów klasy Zamowienie i posortuj ją według sprecyzowanego kryterium.
+
+4. Napisz klasę Order z polami id (typu int), customerName (typu String) oraz orderDate (typu LocalDate). 
+Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu orderDate (od najwcześniejszej do najpóźniejszej daty),
+a w przypadku równości po polu id. Stwórz listę 5 obiektów klasy Order i posortuj ją zgodnie z opisanym kryterium.
+
+5. Napisz klasę Song z polami title (typu String), artist (typu String) oraz duration (typu int). 
+Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu duration (od najkrótszej do najdłuższej piosenki),
+a w przypadku równości po polu title. Stwórz tablicę 5 obiektów klasy Song i posortuj ją zgodnie z opisanym kryterium.
+
+6. Napisz klasę Student z polami id (typu int), name (typu String) oraz averageGrade (typu double). 
+Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: AverageGradeComparator do porównywania obiektów po polu averageGrade 
+(od najwyższej do najniższej średniej ocen) oraz IdComparator do porównywania obiektów po polu id (od najniższego do najwyższego identyfikatora). 
+Stwórz listę 5 obiektów klasy Student i posortuj ją zgodnie z oboma kryteriami (najpierw po średniej ocen, a następnie po identyfikatorze).
+
+7. Napisz klasę Athlete z dwoma polami: name (String) i lapTimes (lista tablicowa zmiennych typu Integer, reprezentująca czas w sekundach potrzebny na 
+przebiegnięcie okrążenia podczas różnych prób). Zaimplementuj interfejs Cloneable i nadpisz metodę clone(), aby móc klonować obiekty tej klasy. 
+W metodzie main() utwórz obiekt Athlete, sklonuj go, a następnie zmień czas na pozycji 3 oryginalnego sportowca. 
+Wyświetl czasy obu sportowców, aby zobaczyć, czy są niezależne.
+
