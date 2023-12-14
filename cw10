@@ -1,0 +1,438 @@
+package zad4;
+
+public class UserAuthentication implements Authentication{
+    private boolean loggedIn = false;
+    public String username = "usr";
+    private String password = "1234";
+
+    @Override
+    public boolean login(String username, String password) {
+        if(loggedIn) return false;
+        if(this.username.equals(username) &&
+        this.password.equals(password)){
+            loggedIn = true;
+        }
+        return loggedIn;
+    }
+
+    @Override
+    public void logout() {
+        loggedIn = false;
+    }
+
+    @Override
+    public boolean resetPassword(String username, String oldPassword, String newPassword) {
+        if(this.username.equals(username) &&
+        this.password.equals(oldPassword)){
+            this.password = newPassword;
+            return true;
+        }
+        return false;
+    }
+
+    public UserAuthentication() {
+    }
+}
+
+
+package zad4;
+
+public class AdminAuthentication implements Authentication{
+    private boolean loggedIn = false;
+    public String username = "admin";
+    private String password = "admin";
+
+    @Override
+    public boolean login(String username, String password) {
+        if(loggedIn) return false;
+        if(this.username.equals(username) &&
+                this.password.equals(password)){
+            loggedIn = true;
+        }
+        return loggedIn;
+    }
+
+    @Override
+    public void logout() {
+        loggedIn = false;
+    }
+
+    @Override
+    public boolean resetPassword(String username, String oldPassword, String newPassword) {
+        if(this.username.equals(username) &&
+                this.password.equals(oldPassword)){
+            this.password = newPassword;
+            return true;
+        }
+        return false;
+    }
+
+    public void deleteSystem(){
+        if(loggedIn) System.out.println("no problem");
+    }
+
+    public AdminAuthentication() {
+    }
+}
+package zad4;
+
+public interface Authentication {
+    boolean login(String username, String password);
+    void logout();
+    boolean resetPassword(String username,String oldPassword,
+                          String newPassword);
+}
+package zad4;
+
+public class AuthenticationTest {
+    public static void main(String[] args) {
+        UserAuthentication ua = new UserAuthentication();
+        System.out.println(ua.login("sr","1234"));
+        System.out.println(ua.login("usr","1234"));
+        ua.logout();
+        ua.resetPassword("usr","1234","4321");
+        System.out.println(ua.login("usr","1234"));
+        System.out.println(ua.login("usr","4321"));
+        ua.logout();
+        System.out.println("admin test:");
+        AdminAuthentication aa = new AdminAuthentication();
+        System.out.println(aa.login("admin","adm"));
+        aa.deleteSystem();
+        System.out.println(aa.login("admin","admin"));
+        aa.deleteSystem();
+        aa.logout();
+
+    }
+}
+package zad4;
+
+public class UserAuthentication implements Authentication{
+    private boolean loggedIn = false;
+    public String username = "usr";
+    private String password = "1234";
+
+    @Override
+    public boolean login(String username, String password) {
+        if(loggedIn) return false;
+        if(this.username.equals(username) &&
+        this.password.equals(password)){
+            loggedIn = true;
+        }
+        return loggedIn;
+    }
+
+    @Override
+    public void logout() {
+        loggedIn = false;
+    }
+
+    @Override
+    public boolean resetPassword(String username, String oldPassword, String newPassword) {
+        if(this.username.equals(username) &&
+        this.password.equals(oldPassword)){
+            this.password = newPassword;
+            return true;
+        }
+        return false;
+    }
+
+    public UserAuthentication() {
+    }
+}
+
+
+package zad1;
+
+public class Cat implements LoudAnimal{
+    @Override
+    public void makeNoise() {
+        System.out.println("prrrrrrr miau");
+    }
+}
+
+package zad1;
+
+public class Dog implements LoudAnimal{
+    @Override
+    public void makeNoise() {
+        System.out.println("auuuu hau hau hau");
+    }
+}
+package zad1;
+
+public interface LoudAnimal {
+    public void makeNoise();
+}
+package zad1;
+
+public class Main {
+    public static void main(String[] args) {
+        new Dog().makeNoise();
+        new Cat().makeNoise();
+    }
+}
+
+
+package zad2;
+
+public interface MyComparator {
+    public int compare(int a, int b);
+}
+package zad2;
+
+public class TestMyComparator implements MyComparator{
+
+    @Override
+    public int compare(int a, int b) {
+        return a-b;
+    }
+}
+
+package zad3;
+
+public interface Converter {
+    public abstract double convertToEuro(double amount);
+    public abstract double convertToUSD(double amount);
+    public abstract double getConversionRate(String currency);
+}
+package zad3;
+
+public class ConverterTest {
+    public static void main(String[] args) {
+        CurrencyConverter cc = new CurrencyConverter();
+        System.out.println(cc.convertToEuro(100));
+        System.out.println(cc.convertToUSD(100));
+
+        UnitConverter uc = new UnitConverter();
+        System.out.println(uc.convertToEuro());
+        System.out.println(uc.convertToUSD());
+    }
+
+}
+package zad3;
+
+public class CurrencyConverter implements Converter{
+
+
+    @Override
+    public double convertToEuro(double amount) {
+        return amount * getConversionRate("eur");
+    }
+
+    @Override
+    public double convertToUSD(double amount) {
+        return amount * getConversionRate("usd");
+    }
+
+    @Override
+    public double getConversionRate(String currency) {
+        if(currency.equals("usd")){
+            return 0.25;
+        }
+        if(currency.equals("eur")){
+            return 0.23;
+        }
+        return -1;
+    }
+}
+package zad3;
+
+public class UnitConverter implements Converter {
+    @Override
+    public double convertToEuro(double amount) {
+        return amount * getConversionRate("eur");
+    }
+
+    public double convertToEuro(){
+        return convertToEuro(1);
+    }
+
+    @Override
+    public double convertToUSD(double amount) {
+        return amount * getConversionRate("usd");
+    }
+
+    public double convertToUSD(){
+        return convertToUSD(1);
+    }
+
+    @Override
+    public double getConversionRate(String currency) {
+        if(currency.equals("usd")){
+            return 0.25;
+        }
+        if(currency.equals("eur")){
+            return 0.23;
+        }
+        return -1;
+    }
+}
+
+
+package zad5;
+
+import java.util.Date;
+import java.util.Random;
+import java.util.Timer;
+
+public class PressureSensor implements Sensor{
+    double pressure = 0;
+    boolean poweredOn;
+    @Override
+    public double readValue() {
+        if(poweredOn) {
+            pressure =  new Random().nextInt(1000000);
+            return pressure;
+        }
+        return Double.NaN;
+    }
+
+    @Override
+    public String getStatus() {
+        return poweredOn ? "ON" : "OFF";
+    }
+
+    @Override
+    public void reset() {
+        if(poweredOn) pressure = 0;
+    }
+}
+package zad5;
+
+public interface Sensor {
+    double readValue();
+    String getStatus();
+    void reset();
+}
+package zad5;
+
+import java.sql.SQLOutput;
+
+public class SensorTest {
+    public static void main(String[] args) {
+        TemperatureSensor ts = new TemperatureSensor();
+        System.out.println(ts.getStatus());
+        ts.poweredOn = true;
+        System.out.println(ts.getStatus());
+        System.out.println(ts.readValue());
+        ts.reset();
+        System.out.println(ts.temp);
+        System.out.println(ts.readValue());
+        ts.poweredOn = false;
+        System.out.println(ts.readValue());
+
+
+
+
+    }
+}
+package zad5;
+
+import java.util.Random;
+
+public class TemperatureSensor implements Sensor{
+    double temp;
+    boolean poweredOn;
+    @Override
+    public double readValue() {
+        if(poweredOn) {
+            temp = new Random().nextInt(100);
+            return temp;
+        }
+        return Double.NaN;
+    }
+
+    @Override
+    public String getStatus() {
+        return poweredOn ? "ON" : "OFF";
+    }
+
+    @Override
+    public void reset() {
+        if(poweredOn) temp = 0;
+    }
+}
+
+
+package zad6;
+
+public interface DataProcessor {
+    String processData(String data);
+    boolean isValid(String data);
+}
+package zad6;
+
+public class NumberProcessor implements DataProcessor{
+    @Override
+    public String processData(String data) {
+        if(!isValid(data)) return "NaN";
+
+        StringBuilder sb = new StringBuilder("Processed: ");
+        return sb.append(data).toString();
+    }
+
+    @Override
+    public boolean isValid(String data) {
+        return data.matches("-?\\d+(\\.\\d+)?");
+    }
+}
+package zad6;
+
+public class TestDataProcessor {
+    public static void main(String[] args) {
+        TextProcessor tp = new TextProcessor();
+        System.out.println(tp.isValid(""));
+        System.out.println(tp.isValid("ni"));
+        System.out.println(tp.isValid(null));
+        System.out.println(tp.processData("ni"));
+
+        System.out.println("Number processor: ");
+        NumberProcessor np = new NumberProcessor();
+
+        System.out.println(np.isValid("123"));
+        System.out.println(np.isValid(""));
+        System.out.println(np.isValid("ni"));
+        System.out.println(np.processData("ni"));
+        System.out.println(np.processData("-12.3"));
+    }
+}
+package zad6;
+
+public class TextProcessor implements DataProcessor{
+
+    @Override
+    public String processData(String data) {
+        if(isValid(data))
+            return new StringBuilder(data).reverse().toString();
+        return "not valid";
+    }
+
+    @Override
+    public boolean isValid(String data) {
+        if(data == null) return false;
+        return !data.isEmpty();
+    }
+}
+
+lab9.iml
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+
+
+
+
+
+
+
+
+
+
