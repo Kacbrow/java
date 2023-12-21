@@ -1,0 +1,191 @@
+-------------ZAD.1----------
+package zad1;
+
+public class Biuro {
+    private Printer p;
+
+    public Biuro(Printer p) {
+        this.p = p;
+    }
+
+    public void drukujDokument(String tekst){
+        p.drukuj(tekst);
+    }
+}
+package zad1;
+
+public class Main {
+    public static void main(String[] args) {
+        Biuro b = new Biuro(new StandardowyPrinter());
+        b.drukujDokument("wqoiwdnqowd");
+    }
+}
+package zad1;
+
+public interface Printer {
+    void drukuj(String tekst);
+}
+package zad1;
+
+public class StandardowyPrinter implements Printer{
+    @Override
+    public void drukuj(String tekst) {
+        System.out.println("Standardowy printer printuje: " + tekst);
+    }
+}
+
+--------ZAD.2------------
+package zad2;
+
+public class BenzynowySilnik implements Silnik{
+    @Override
+    public void uruchom() {
+        System.out.println("brrrr");
+    }
+
+    @Override
+    public void zatrzymaj() {
+        System.out.println("*cisza*");
+    }
+}
+package zad2;
+
+public class Samochod {
+    Silnik s;
+
+    public Samochod(Silnik s) {
+        this.s = s;
+    }
+
+    public void start(){
+        s.uruchom();
+    }
+
+    public void stop(){
+        s.zatrzymaj();
+    }
+
+    public static void main(String[] args) {
+        Samochod samochod = new Samochod(new BenzynowySilnik());
+        samochod.start();
+        samochod.stop();
+    }
+}
+package zad2;
+
+public interface Silnik {
+    void uruchom();
+    void zatrzymaj();
+}
+
+
+-----------ZAD.3-----------
+package zad3;
+
+public class Email implements Powiadomienie{
+    @Override
+    public void wyslij(String wiadomosc) {
+        System.out.println("Wiadomosc \"" + wiadomosc + "\"\nwyslana");
+    }
+}
+package zad3;
+
+public interface Powiadomienie {
+    void wyslij(String wiadomosc);
+}
+package zad3;
+
+public class Uzytkownik {
+    private Powiadomienie p;
+
+    public Uzytkownik(Powiadomienie p) {
+        this.p = p;
+    }
+
+    public void powiadomOModernizacji(String informacja){
+        p.wyslij(informacja);
+    }
+
+    public static void main(String[] args) {
+        Uzytkownik u = new Uzytkownik(new Email());
+        u.powiadomOModernizacji("uiqhwdiuqdh");
+    }
+}
+
+
+--------------ZAD.4-----------
+package zad4;
+
+public class Main {
+    public static void main(String[] args) {
+        int age = 30;
+        try{
+            checkAge(age);
+            System.out.println("dobry wiek");
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("wiek < 18");
+        }
+
+    }
+
+    public static void checkAge(int age) {
+        if(age < 18) throw new IllegalArgumentException();
+    }
+}
+
+
+------------------ZAD.5------------
+package zad5;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            try {
+                double a,b;
+                System.out.print("Podaj a: ");
+                a = scanner.nextDouble();
+                System.out.print("Podaj b: ");
+                b = scanner.nextDouble();
+
+                System.out.println(a/b);
+            }
+            catch (ArithmeticException|InputMismatchException e){
+                System.out.println("Błąd typu " + e.getCause());
+                System.out.println("Wprowadz dane jeszcze raz");
+                scanner = new Scanner(System.in);
+            }
+        }
+    }
+}
+
+
+-----------ZAD.6------------
+package zad6;
+
+public class Main{
+    public static void main(String[] args) throws NiepoprawnyFormatDanychException {
+        sprawdzFormatDanych("m.m@e.m.pl");
+        /*try {
+            sprawdzFormatDanych("aa.pl");
+        }
+        catch (NiepoprawnyFormatDanychException e){
+            System.out.println("nie email");
+        }*/
+    }
+    public static void sprawdzFormatDanych(String dane) throws NiepoprawnyFormatDanychException {
+        if(!dane.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) throw new NiepoprawnyFormatDanychException();
+    }
+}
+
+package zad6;
+
+public class NiepoprawnyFormatDanychException extends Exception{
+
+}
+
+
