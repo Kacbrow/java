@@ -1,0 +1,46 @@
+public interface Biletomat {
+    void wystawBilet();
+}
+
+public class BramkaNaAutostradzie implements Biletomat{
+
+    @Override
+    public void wystawBilet() {
+        System.out.println("Wystawionno bilet na przejazd odcinkiem autostrady");
+    }
+}
+
+public class Koncert implements Biletomat{
+    @Override
+    public void wystawBilet(){
+        System.out.println("Zarezerwowano bilet na koncert");
+    }
+
+}
+public class LotMiedzynarodowy implements Biletomat{
+    @Override
+    public void wystawBilet(){
+        System.out.println("Wystawiono bilet lotniczy");
+    }
+}
+public class KierownikWycieczki {
+    private final Biletomat biletomat;
+    public KierownikWycieczki(Biletomat biletomat){
+        this.biletomat=biletomat;
+    }
+    public void ogarnijBilet(){
+        biletomat.wystawBilet();
+    }
+}
+
+w main:!
+//Koncert koncert=new Koncert();
+        //LotMiedzynarodowy lotMiedzynarodowy=new LotMiedzynarodowy();
+        //koncert.wystawBilet();
+       // lotMiedzynarodowy.wystawBilet();
+        KierownikWycieczki kierownik=new KierownikWycieczki(new Koncert());
+        kierownik.ogarnijBilet();
+        kierownik=new KierownikWycieczki(new LotMiedzynarodowy());
+        kierownik.ogarnijBilet();
+        kierownik=new KierownikWycieczki(new BramkaNaAutostradzie());
+        kierownik.ogarnijBilet();
