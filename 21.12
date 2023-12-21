@@ -134,6 +134,23 @@ public class Main {
     }
 }
 
+DRUGA WERSJA!!!!
+try{
+            checkAge(18);
+            checkAge(20);
+            checkAge(17);
+        }
+        catch (IllegalArgumentException error){
+            System.out.println("wiek < 18");
+        }
+
+
+
+    }
+    public static void checkAge(int age) {
+        if(age < 18) throw new IllegalArgumentException( "wiek musi byc wiekszy");
+        else System.out.println("dobry wiek");
+    }
 
 ------------------ZAD.5------------
 package zad5;
