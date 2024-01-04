@@ -1,3 +1,25 @@
+---------/PRZYKŁAD!\---------------
+public class Box <T,U>{
+    T value;
+    U value2;
+    public Box(T value,U value2){
+        this.value=value;
+        this.value2=value2;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Box<String,Integer>box=new Box<>("CZeść",2);
+        Box<Integer,String>box1=new Box<>(5,"Vzesc");
+        Box<String,String>box2=new Box<>("CZesc","Vzesc");
+        wypisz(4);
+        wypisz("Czesc");
+    }
+    public static<T> void wypisz(T val){
+        System.out.println(val);
+    }
+}
+
 ---------------/zad4\--------------
 
 import java.util.Arrays;
