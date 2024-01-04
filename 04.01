@@ -1,3 +1,5 @@
+Na kolosie możemy się spodziewać arrylisty a dzisiaj omawiamy generyczne
+
 /////zad.1
 public class Triple <T,U,V>{
     T first;
