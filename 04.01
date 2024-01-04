@@ -1,0 +1,274 @@
+/////zad.1
+public class Triple <T,U,V>{
+    T first;
+    U second;
+    V third;
+
+    public Triple() {
+    }
+
+    public Triple(T first, U second, V third) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public U getSecond() {
+        return second;
+    }
+
+    public V getThird() {
+        return third;
+    }
+
+    public static void main(String[] args) {
+        Triple<Integer,String,Triple> t = new Triple(1,"s",new Triple<Triple,Triple,Triple>());
+        System.out.println(t.getFirst());
+        System.out.println(t.getSecond());
+        System.out.println(t.getThird());
+    }
+}
+
+///////zad.2
+package zad2;
+
+public class isEqual {
+    public static void main(String[] args) {
+        String s = "1";
+        String s1 = "1";
+        int i = 1;
+        System.out.println(isEqual(i,s));
+        System.out.println(isEqual(s,s1));
+    }
+
+    public static <T> boolean isEqual(T obj1, T obj2){
+        return obj1.equals(obj2);
+    }
+}
+
+
+/////zad.3
+import java.util.ArrayList;
+import java.util.List;
+
+public class Counter <T>{
+    List<T> lista = new ArrayList<>();
+    int counter;
+
+    public void add(T element){
+        lista.add(element);
+        counter++;
+    }
+
+    public int getCount() {
+        return counter;
+    }
+}
+
+///zad.4
+public class Main {
+    public static void main(String[] args) {
+
+    }
+
+    public static <T> void swap(T[] array, int a, int b){
+        try{
+            T temp = array[a];
+            array[a] = array[b];
+            array[b] = temp;
+        } catch (Exception e){
+            System.out.println("cant swap");
+        }
+
+
+    }
+}
+
+
+///zad.5
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Main {
+    public static void main(String[] args) {
+        Person[] p = {new Person("1",30),
+        new Person("2",10),
+        new Person("3",11)};
+
+        System.out.println(minValue(p).age);
+    }
+
+    public static <T extends Comparable<T>> T minValue(T[] tab){
+        if(tab.length == 0) return null;
+        T min = tab[0];
+        for(int i = 0; i < tab.length; i++){
+            if(tab[i].compareTo(min) < 0){
+                min = tab[i];
+            }
+        }
+        return min;
+    }
+}
+
+class Person implements Comparable<Person>{
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person p) {
+        return this.age - p.age;
+    }
+}
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Main {
+    public static void main(String[] args) {
+        Person[] p = {new Person("1",30),
+        new Person("2",10),
+        new Person("3",11)};
+
+        System.out.println(minValue(p).age);
+    }
+
+    public static <T extends Comparable<T>> T minValue(T[] tab){
+        if(tab.length == 0) return null;
+        T min = tab[0];
+        for(int i = 0; i < tab.length; i++){
+            if(tab[i].compareTo(min) < 0){
+                min = tab[i];
+            }
+        }
+        return min;
+    }
+}
+
+class Person implements Comparable<Person>{
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person p) {
+        return this.age - p.age;
+    }
+}
+
+///zad.6
+public class Animal {
+    int age;
+}
+public class Dog extends Animal{
+    String color;
+}
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        a.age = 12;
+        Dog d = new Dog();
+        d.age = 13;
+        d.color = "brown";
+        System.out.println(findMax(a,d).age);
+    }
+
+    public static <T extends Animal> T findMax(T el1, T el2){
+        return el1.age >= el2.age ? el1 : el2;
+    }
+}
+
+
+///zad.7
+public class Main {
+    public static void main(String[] args) {
+        Tree[] trees = {new Tree(1,20),
+                new Tree(3,10),
+                new Tree(0,0),new Tree(123,1000)};
+        Pair<? super Tree> result =  new Pair<>();
+        findMinMaxHeight(trees,result);
+        System.out.println("min " + (Tree)result.a);
+        System.out.println("max " + result.b);
+    }
+
+    public static void findMinMaxHeight(Tree[] trees, Pair<? super Tree> result){
+        result.a = trees[0];
+        result.b = trees[0];
+        for(int i = 0; i < trees.length; i++){
+            if(trees[i].compareTo((Tree) result.a) < 0){
+                result.a = trees[i];
+            }
+            else if(trees[i].compareTo((Tree) result.b) > 0){
+                result.b = trees[i];
+            }
+        }
+    }
+}
+
+public class Pair <T>{
+    public T a, b;
+
+    public Pair(){}
+
+    public Pair(T a, T b) {
+        this.a = a;
+        this.b = b;
+    }
+}
+public class Plant {
+    int age;
+
+    public Plant(int age) {
+        this.age = age;
+    }
+
+    public Plant() {
+    }
+}
+public class Tree extends Plant implements Comparable<Tree>{
+    private int height;
+
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public String toString() {
+        return "Tree{" +
+                "height=" + height +
+                ", age=" + age +
+                '}';
+    }
+
+    public Tree(int height) {
+        this.height = height;
+    }
+
+    public Tree(int height, int age){
+        super(age);
+        this.height = height;
+    }
+
+    @Override
+    public int compareTo(Tree o) {
+        return this.height - o.height;
+    }
+}
+
+
+
+
+
+
+
